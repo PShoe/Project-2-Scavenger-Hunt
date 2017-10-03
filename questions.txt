@@ -1,0 +1,9 @@
+1. How to use password digest
+2. How to assign a player to a team
+
+ psql -d treasurehunt -f treasurehunt.sql
+
+.password
+
+
+3. Check on relationships in models, do I need a model for player/treasure/teams table?
