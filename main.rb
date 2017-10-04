@@ -66,7 +66,8 @@ end
 get '/treasure' do
   team_id = current_player.team_id
   @treasures_found = PlayersTreasuresTeam.where(team_id: team_id)
-  @treasures_not_found = Treasure.left_outer_joins(:players_treasures_teams).where('players_treasures_teams.play_tre_tm_id is null')
+  @treasures_not_found =
+  Treasure.joins("left outer join (select * from players_treasures_teams where team_id = #{team_id}) as found on treasures.id = found.treasure_id where team_id is null");
   # @current_player = current_player
   ## need to specify team
   player = current_player

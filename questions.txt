@@ -19,3 +19,7 @@ Treasure.where().sum(:point_value)
   <p>Found by: <%= player.name %>, <%= player.team.name %> team</p>
 <% end %>
 <img src="<%= treasure.image_url %>" width="200" alt=""> -->
+
+Treasure.left_outer_joins(:players_treasures_teams).where('players_treasures_teams.play_tre_tm_id is null and team_id = ?', 1)
+
+select id, name, play_tre_tm_id, team_id from treasures left join (select * from players_treasures_teams where team_id = 2) as found on treasures.id = found.treasure_id where team_id is null;
