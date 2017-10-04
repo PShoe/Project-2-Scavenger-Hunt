@@ -1,9 +1,21 @@
 1. How to use password digest
 2. How to assign a player to a team
 
- psql -d treasurehunt -f treasurehunt.sql
+psql -d treasurehunt -f treasurehunt.sql
 
 .password
 
 
 3. Check on relationships in models, do I need a model for player/treasure/teams table?
+
+4. Check if you have already registered
+5. Calculate points
+
+Treasure.where().sum(:point_value)
+
+
+<!-- <h3><%= treasure.name %></h3>
+<% treasure.players.each do |player| %>
+  <p>Found by: <%= player.name %>, <%= player.team.name %> team</p>
+<% end %>
+<img src="<%= treasure.image_url %>" width="200" alt=""> -->

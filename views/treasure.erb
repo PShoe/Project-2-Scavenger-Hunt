@@ -1,1 +1,42 @@
-<h1>This is the treasure page</h1>
+<h1>This is the treasure home page</h1>
+
+<% if logged_in? %>
+  <p><%= current_player.name %></p>
+  <p><%= @player_points %></p>
+  <p><%= current_player.team.name %></p>
+  <p><%= @team_points %></p>
+<% end %>
+
+
+<% if @treasures_found.first %>
+  <h1>Your team has found:</h1>
+  <div class="found">
+  <% @treasures_found.each do |treasure| %>
+    <% treasure = Treasure.find(treasure.treasure_id) %>
+    <%= treasure.name %>
+    <img src="<%= treasure.image_url %>" width="200" alt="">
+    <% treasure.players.each do |player| %>
+      <p>Found by: <%= player.name %>, <%= player.team.name %> team</p>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>
+
+
+<% if @treasures_not_found.first %>
+  <h1>Yet to find:</h1>
+  <div class="not_found">
+  <% @treasures_not_found.each do |treasure| %>
+    <% if logged_in? %>
+      <form class="" action="/found" method="post">
+        <input type="hidden" name="treasure_id" value="<%= treasure.id %>">
+        <h3><%= treasure.name %></h3>
+        <p><%= treasure.description %></p>
+        <img src="<%= treasure.image_url %>" width="200" alt="">
+        <p>Points: <%= treasure.point_value %></p>
+        <button type="submit">Found!</button>
+      </form>
+    <% end %>
+  <% end %>
+  </div>
+<% end %>

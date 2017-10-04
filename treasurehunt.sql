@@ -35,6 +35,11 @@ INSERT INTO treasures (name, description, image_url, point_value, found) VALUES 
 
 INSERT INTO treasures (name, description, image_url, point_value, found) VALUES ('St. Kilda','something about the St. Kilda','https://media.timeout.com/images/103025847/710/399/image.jpg', 5, false);
 
+INSERT INTO treasures (name, description, image_url, point_value, found) VALUES ('Circus Oz','See a show by Circus Oz','https://media.timeout.com/images/103380868/710/399/image.jpg', 5, false);
+
+
+
+
 CREATE TABLE players_treasures_teams (
   play_tre_tm_id SERIAL4 PRIMARY KEY,
   treasure_id INTEGER NOT NULL,
