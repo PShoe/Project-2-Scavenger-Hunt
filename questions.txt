@@ -37,3 +37,7 @@ Melbourne:
   "lon": 144.944214,
   "lat": -37.813061
 }
+
+
+
+heroku pg:backups:restore 'http://github.com/PShoe/Project-2-Scavenger-Hunt/raw/master/db.dump' DATABASE_URL

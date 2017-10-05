@@ -30,7 +30,8 @@
     <%= treasure.name %>
       <img src="<%= treasure.image_url %>" width="200" alt="">
     <% treasure.comments.each do |comment| %>
-      <p><%= comment.body %> -<%= comment.player.name %>, <%= comment.player.team.name %></p>
+      <a href="/edit?treasure_id=<%= treasure.id %>&comment_id=<%= comment.id %>"><p><%= comment.body %> -<%= comment.player.name %>, <%= comment.player.team.name %></p>
+    </a>
     <% end %>
   <% end %>
   </div>

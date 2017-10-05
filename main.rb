@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader'
 require 'pg'
 require 'pry'
 require_relative 'db_config'
@@ -16,6 +17,8 @@ enable :sessions
 
 # API_KEY = '&APPID=d10ed7fa849100a3d43e443f9ba5b599'
 # need to hide this in bash_profile
+
+# add a new challenge?
 
 @weather_response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
 
@@ -40,14 +43,16 @@ end
 
 post '/session' do
   player = Player.find_by(email: params[:email])
-  if player && player.authenticate(params[:password])
-    session[:player_id] = player.id
-    redirect '/treasure'
-  else
-    @message = "incorrect email or password"
-    erb :login
+  # if !player
+    if player && player.authenticate(params[:password])
+      session[:player_id] = player.id
+      redirect '/treasure'
+    else
+      @message = "incorrect email or password"
+      erb :login
+    end
   end
-end
+# end
 
 delete '/session' do
   session[:user_id] = nil
@@ -107,7 +112,6 @@ post '/found' do
   @treasure = Treasure.find(params[:treasure_id])
   @comments = Comment.where(treasure_id: params[:treasure_id])
   erb :show
-
 end
 
 post '/comments' do
@@ -117,11 +121,18 @@ post '/comments' do
   comment.player_id = current_player.id
   comment.team_id = current_player.team_id
   comment.save
-  redirect "/treasure"
+  redirect '/treasure'
 end
 
-# get '/treasure/:id' do
-#   @treasure = treasure.find(params[:id])
-#   @comments = Comment.where(treasure_id: params[:id])
-#   erb :show
-# end
+get '/edit' do
+  @treasure = Treasure.find(params[:treasure_id])
+  @comment = Comment.find(params[:comment_id])
+  erb :edit
+end
+
+put '/edit' do
+  @comment = Comment.find(params[:comment_id])
+  @comment.body = params[:body]
+  @comment.save
+  redirect '/treasure'
+end

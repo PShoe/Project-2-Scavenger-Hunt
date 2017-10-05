@@ -8,6 +8,6 @@ require_relative 'treasure_methods'
 require 'httparty'
 require_relative 'models/comment'
 
-
+binding.pry
 
 puts "this is working"
