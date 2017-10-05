@@ -105,7 +105,6 @@ post '/found' do
   found_record.team_id = current_player.team_id
   found_record.save
   # redirect '/treasure'
-  # binding.pry
   @treasure = Treasure.find(params[:treasure_id])
   @comments = Comment.where(treasure_id: params[:treasure_id])
   erb :show
