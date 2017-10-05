@@ -1,8 +1,16 @@
+<% if logged_in? %>
+<form action="/session" method="post">
+  <input type="hidden" name="_method" value="delete">
+<button>Log out</button>
+</form>
+<% end %>
+
 <h1>Melbourne Weather Today</h1>
 <h3><%= @condition %> with a min temp of <%= @min_temp %>(°C) and a max temp of <%= @max_temp %>(°C)</h3>
 
 <% if logged_in? %>
-  <h2><%= current_player.name %> score, <%= current_player.team.name %> team: <%= @player_points %></h2>
+  <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
+  <p>Personal score: <%= @player_points %></p>
   <h2>TEAM SCORES:</h2>
   <div class="scores">
     <img src='<%= @wdi_image %>' width="100">
@@ -13,10 +21,6 @@
     <p>UX: <%= @ux_points %></p>
   </div>
 <% end %>
-
-<h1>Melbourne Scavenger Weather Today:</h1>
-<h3><%= @condition %> with a min temp of <%= @min_temp %>(°C) and a max temp of <%= @max_temp %>(°C)</h3>
-
 
 <% if @treasures_found.first %>
   <h1>Your team has found:</h1>

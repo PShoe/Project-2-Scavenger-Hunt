@@ -32,7 +32,6 @@ get '/' do
   erb :index
 end
 
-# USER CAN LOG IN AND CHOOSE A TEAM
 get '/login' do
   erb :login
 end
@@ -82,28 +81,20 @@ get '/treasure' do
   @treasures_found = PlayersTreasuresTeam.where(team_id: team_id)
   @treasures_not_found =
   Treasure.joins("left outer join (select * from players_treasures_teams where team_id = #{team_id}) as found on treasures.id = found.treasure_id where team_id is null");
-  # @current_player = current_player
-  ## need to specify team
+
   player = current_player
   @player_points = player.treasures.sum(:point_value)
+  # could add these as for each loops
   @wdi_image = Team.find(3).image_url
   @ds_image = Team.find(2).image_url
   @ux_image = Team.find(1).image_url
   @wdi_points = Team.find(3).treasures.sum(:point_value)
   @ds_points = Team.find(2).treasures.sum(:point_value)
   @ux_points = Team.find(1).treasures.sum(:point_value)
-
-
   erb :treasure
 end
 
 post '/found' do
-  # Add treasure as found to linking table
-  # treasure_id = params[:treasure_id]
-  # treasure = Treasure.where(id: treasure_id).first
-  # treasure.found = true
-  # treasure.save
-
   # make a new record in linking table
   found_record = PlayersTreasuresTeam.new
   found_record.treasure_id = params[:treasure_id]

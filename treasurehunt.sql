@@ -47,3 +47,13 @@ CREATE TABLE players_treasures_teams (
   team_id INTEGER NOT NULL,
   FOREIGN KEY (team_id) REFERENCES teams (id)
 );
+
+CREATE TABLE comments (
+  id SERIAL4 PRIMARY KEY,
+  body VARCHAR(400) NOT NULL,
+  treasure_id INTEGER NOT NULL,
+  FOREIGN KEY (treasure_id)  REFERENCES treasures (id),
+  player_id INTEGER NOT NULL,
+  FOREIGN KEY (player_id) REFERENCES players (id),
+  team_id INTEGER NOT NULL
+);

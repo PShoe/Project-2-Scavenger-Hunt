@@ -4,7 +4,8 @@
 }
 .not_found {
   background-color: lightblue;
+  width: 200px;
 }
-.scores {
+.scores img, .scores p {
   display: inline-block;
 }
