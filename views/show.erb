@@ -5,7 +5,7 @@
 
 <% if logged_in? %>
 <form action="/comments" method="post">
-  <p>Leave a note to tell everyone how it went:</p>
+  <p>Leave a note or hint to tell everyone how it went:</p>
   <input type="hidden" name="treasure_id" value="<%= @treasure.id %>">
   <textarea name="body" rows="4" cols="50"></textarea>
   <button type="submit" name="button">Post</button>

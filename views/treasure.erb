@@ -38,7 +38,7 @@
 
 
 <% if @treasures_not_found.first %>
-  <h1>Yet to find:</h1>
+  <h1>Your team still needs to find:</h1>
   <div class="not_found">
   <% @treasures_not_found.each do |treasure| %>
     <% if logged_in? %>
@@ -46,11 +46,11 @@
         <input type="hidden" name="treasure_id" value="<%= treasure.id %>">
         <h3><%= treasure.name %></h3>
         <p><%= treasure.description %></p>
-        <a href="#">
+        <a href="<%= treasure.site_url %>">
         <img src="<%= treasure.image_url %>" width="200" alt="">
         </a>
         <p>Points: <%= treasure.point_value %></p>
-        <button type="submit">Found!</button>
+        <button type="submit">I did this!</button>
       </form>
     <% end %>
   <% end %>
