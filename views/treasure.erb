@@ -1,14 +1,15 @@
+
 <main>
 <div class="weather">
   <h1>Melbourne Weather Today</h1>
   <h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
 </div>
-
 <% if logged_in? %>
 <form action="/session" method="post">
   <input type="hidden" name="_method" value="delete">
 <button>Log out</button>
 <% end %>
+
 <% if logged_in? %>
   <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
   <p>Personal score: <%= @player_points %></p>
@@ -39,8 +40,8 @@
       <img src="<%= treasure.image_url %>" width="200" alt="">
     <% treasure.comments.each do |comment| %>
       <%= create_link_with_comment(treasure, comment) %></br>
-      </div>
     <% end %>
+    </div>
   <% end %>
   </div>
 <% end %>

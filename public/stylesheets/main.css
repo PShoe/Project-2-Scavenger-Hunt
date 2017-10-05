@@ -3,14 +3,13 @@
 }
 body {
   background: url("/../images/melb.jpg");
-  color: white;
   padding: 40px 20px;
-
+  color: white;
+  font-family: 'Raleway', sans-serif;
 }
 .login {
   padding: 20px;
 }
-
 .found,
 .not_found
  {
@@ -20,13 +19,16 @@ body {
   width: 30%;
   margin: 10px;
   border: 1px solid #181818;
+  padding: 10px;
 }
 .found img,
 .not_found img {
   padding-bottom: 10px;
   width: 100%;
 }
-
+.found {
+  border-bottom: 2px solid white;
+}
 .scores img, .scores p {
   display: inline-block;
 }
@@ -50,6 +52,7 @@ main button {
   width: 100%;
   color: white;
   padding: 30px;
+  font-family: 'Merriweather', serif;
 }
 .show img {
   border: 1px solid white;
