@@ -6,6 +6,7 @@ require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
 require_relative 'treasure_methods'
 require 'httparty'
+require_relative 'models/comment'
 
 binding.pry
 

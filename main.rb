@@ -7,13 +7,16 @@ require_relative 'models/player'
 require_relative 'models/team'
 require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
+require_relative 'models/comment'
+
 # require_relative 'treasure_methods'
 require 'httparty'
 
 
 enable :sessions
 
-API_KEY = '&APPID=d10ed7fa849100a3d43e443f9ba5b599'
+# API_KEY = '&APPID=d10ed7fa849100a3d43e443f9ba5b599'
+# need to hide this in bash_profile
 
 @weather_response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
 
@@ -73,9 +76,9 @@ get '/treasure' do
   @weather_response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
   @condition = @weather_response['weather'].first['main']
   @min_temp = @weather_response['main']['temp_min']
-  @min_temp = @min_temp - 273.15
+  @min_temp = (@min_temp - 273.15).to_i
   @max_temp = @weather_response['main']['temp_max']
-  @max_temp = @max_temp - 273.15
+  @max_temp = (@max_temp - 273.15).to_i
 
   team_id = current_player.team_id
   @treasures_found = PlayersTreasuresTeam.where(team_id: team_id)
@@ -101,5 +104,26 @@ post '/found' do
   found_record.player_id = current_player.id
   found_record.team_id = current_player.team_id
   found_record.save
-  redirect '/treasure'
+  # redirect '/treasure'
+  # binding.pry
+  @treasure = Treasure.find(params[:treasure_id])
+  @comments = Comment.where(treasure_id: params[:treasure_id])
+  erb :show
+
 end
+
+post '/comments' do
+  comment = Comment.new
+  comment.body = params[:body]
+  comment.treasure_id = params[:treasure_id]
+  comment.player_id = current_player.id
+  comment.team_id = current_player.team_id
+  comment.save
+  redirect "/treasure"
+end
+
+# get '/treasure/:id' do
+#   @treasure = treasure.find(params[:id])
+#   @comments = Comment.where(treasure_id: params[:id])
+#   erb :show
+# end

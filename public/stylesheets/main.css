@@ -9,3 +9,6 @@
 .scores img, .scores p {
   display: inline-block;
 }
+a {
+  cursor: pointer;
+}

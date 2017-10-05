@@ -1,0 +1,19 @@
+<h1><%= @treasure.name %></h1>
+
+
+<img src="<%= @treasure.image_url %>" alt="">
+
+<% if logged_in? %>
+<form action="/comments" method="post">
+  <p>Leave a note to tell everyone how it went:</p>
+  <input type="hidden" name="treasure_id" value="<%= @treasure.id %>">
+  <textarea name="body" rows="4" cols="50"></textarea>
+  <button type="submit" name="button">Post</button>
+</form>
+<% end %>
+
+
+<% @comments.each do |comment| %>
+  <p><%= comment.body %></p>
+    <div><%= comment.player.name if comment.player %></div>
+<% end %>

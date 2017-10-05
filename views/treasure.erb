@@ -6,7 +6,7 @@
 <% end %>
 
 <h1>Melbourne Weather Today</h1>
-<h3><%= @condition %> with a min temp of <%= @min_temp %>(°C) and a max temp of <%= @max_temp %>(°C)</h3>
+<h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
 
 <% if logged_in? %>
   <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
@@ -28,9 +28,9 @@
   <% @treasures_found.each do |treasure| %>
     <% treasure = Treasure.find(treasure.treasure_id) %>
     <%= treasure.name %>
-    <img src="<%= treasure.image_url %>" width="200" alt="">
-    <% treasure.players.each do |player| %>
-      <p>Found by: <%= player.name %>, <%= player.team.name %></p>
+      <img src="<%= treasure.image_url %>" width="200" alt="">
+    <% treasure.comments.each do |comment| %>
+      <p><%= comment.body %> -<%= comment.player.name %>, <%= comment.player.team.name %></p>
     <% end %>
   <% end %>
   </div>
@@ -46,7 +46,9 @@
         <input type="hidden" name="treasure_id" value="<%= treasure.id %>">
         <h3><%= treasure.name %></h3>
         <p><%= treasure.description %></p>
+        <a href="#">
         <img src="<%= treasure.image_url %>" width="200" alt="">
+        </a>
         <p>Points: <%= treasure.point_value %></p>
         <button type="submit">Found!</button>
       </form>
