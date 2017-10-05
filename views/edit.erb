@@ -4,16 +4,14 @@
 <img src="<%= @treasure.image_url %>" alt="">
 
 <% if logged_in? %>
-<form action="/edit" method="post">
-  <p>Leave a note or hint to tell everyone how it went:</p>
-  <input type="hidden" name="treasure_id" value="<%= @treasure.id %>">
-  <input type="hidden" name="comment_id" value="<%= @comment.id %>">
-  <input type="hidden" name="_method" value="put">
-  <textarea name="body" rows="4" cols="50" placeholder="<%= @comment.body %>"></textarea>
-  <button type="submit" name="button">Edit</button>
-</form>
-<h1><%= @comment.body %></h1>
-<h1><%= @treasure.name %></h1>
+  <form action="/edit" method="post">
+    <p>Leave a note or hint to tell everyone how it went:</p>
+    <input type="hidden" name="treasure_id" value="<%= @treasure.id %>">
+    <input type="hidden" name="comment_id" value="<%= @comment.id %>">
+    <input type="hidden" name="_method" value="put">
+    <textarea name="body" rows="4" cols="50" placeholder="<%= @comment.body %>"></textarea>
+    <button type="submit" name="button">Edit</button>
+  </form>
 
-</body>
-<% end %>
+  </body>
+  <% end %>

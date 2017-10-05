@@ -30,6 +30,19 @@ helpers do
   def logged_in?
     !!current_player
   end
+
+  def create_link_with_comment treasure, comment
+    tag = ''
+    content = "#{comment.body} -#{comment.player.name}, #{comment.player.team.name}"
+    if current_player == comment.player
+      tag += "<a href='/edit?treasure_id=#{treasure.id}&comment_id=#{comment.id}'>"
+      tag += content
+      tag += "</a>"
+    else
+      tag += content
+    end
+    return tag
+  end
 end
 
 
