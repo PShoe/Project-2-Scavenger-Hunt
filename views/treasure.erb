@@ -1,17 +1,14 @@
-
 <main>
-
+<div class="weather">
+  <h1>Melbourne Weather Today</h1>
+  <h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
+</div>
 
 <% if logged_in? %>
 <form action="/session" method="post">
   <input type="hidden" name="_method" value="delete">
 <button>Log out</button>
-</form>
 <% end %>
-
-<h1>Melbourne Weather Today</h1>
-<h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
-
 <% if logged_in? %>
   <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
   <p>Personal score: <%= @player_points %></p>

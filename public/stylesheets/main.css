@@ -1,34 +1,32 @@
+* {
+  box-sizing: border-box;;
+}
 body {
   background: url("/../images/melb.jpg");
   color: white;
-  padding-top: 40px;
-  padding-left: 20px;
+  padding: 40px 20px;
+
 }
 .login {
   padding: 20px;
 }
 
-.found {
-  background-color: #303030;
-  color: white;
+.found,
+.not_found
+ {
+  background-color: #080808;
+  color: linen;
   display: inline-block;
   width: 30%;
   margin: 10px;
+  border: 1px solid #181818;
 }
-.found img {
+.found img,
+.not_found img {
   padding-bottom: 10px;
   width: 100%;
 }
-.not_found {
-  background-color: #303030;
-  color: white;
-  display: inline-block;
-  width: 30%;
-  margin: 10px;
-}
-.not_found img {
-  width: 100%;
-}
+
 .scores img, .scores p {
   display: inline-block;
 }
@@ -39,10 +37,19 @@ a {
 }
 main {
   background-color: black;
-  width: 80%;
+  width: 90%;
   color: white;
   margin: 0 auto;
-  padding: 20px;
+}
+main button {
+  margin-top: 10px;
+}
+.weather {
+  /*background-color: rgba(0,0,0,.7);*/
+  background: url("/../images/clouds.jpg");
+  width: 100%;
+  color: white;
+  padding: 30px;
 }
 .show img {
   border: 1px solid white;
