@@ -1,11 +1,17 @@
-<h1>This is the treasure home page</h1>
+<h1>Melbourne Weather Today</h1>
+<h3><%= @condition %> with a min temp of <%= @min_temp %>(°C) and a max temp of <%= @max_temp %>(°C)</h3>
 
 <% if logged_in? %>
-  <h2>SCORES:</h2>
-  <p><%= current_player.name %></p>
-  <p><%= @player_points %></p>
-  <p><%= current_player.team.name %></p>
-  <p><%= @team_points %></p>
+  <h2><%= current_player.name %> score, <%= current_player.team.name %> team: <%= @player_points %></h2>
+  <h2>TEAM SCORES:</h2>
+  <div class="scores">
+    <img src='<%= @wdi_image %>' width="100">
+    <p>WDI: <%= @wdi_points %></p>
+    <img src='<%= @ds_image %>' width="100">
+    <p>Data Science: <%= @ds_points %></p>
+    <img src='<%= @ux_image %>' width="100">
+    <p>UX: <%= @ux_points %></p>
+  </div>
 <% end %>
 
 <h1>Melbourne Scavenger Weather Today:</h1>
@@ -20,7 +26,7 @@
     <%= treasure.name %>
     <img src="<%= treasure.image_url %>" width="200" alt="">
     <% treasure.players.each do |player| %>
-      <p>Found by: <%= player.name %>, <%= player.team.name %> team</p>
+      <p>Found by: <%= player.name %>, <%= player.team.name %></p>
     <% end %>
   <% end %>
   </div>

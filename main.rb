@@ -86,10 +86,12 @@ get '/treasure' do
   ## need to specify team
   player = current_player
   @player_points = player.treasures.sum(:point_value)
-
-  @green_points = Team.find(1).treasures.sum(:point_value)
-  @blue_points = Team.find(1).treasures.sum(:point_value)
-  @red_points = Team.find(1).treasures.sum(:point_value)
+  @wdi_image = Team.find(3).image_url
+  @ds_image = Team.find(2).image_url
+  @ux_image = Team.find(1).image_url
+  @wdi_points = Team.find(3).treasures.sum(:point_value)
+  @ds_points = Team.find(2).treasures.sum(:point_value)
+  @ux_points = Team.find(1).treasures.sum(:point_value)
 
 
   erb :treasure

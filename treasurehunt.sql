@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS treasures;
 CREATE TABLE teams (
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  total_points INTEGER
+  image_url VARCHAR(400)
 );
 
 CREATE TABLE players (
@@ -19,8 +19,8 @@ CREATE TABLE players (
   FOREIGN KEY (team_id) REFERENCES teams (id)
 );
 
-INSERT INTO teams (name, total_points)
-VALUES ('Red', 0), ('Blue', 0), ('Green', 0);
+INSERT INTO teams (name, image_url)
+VALUES ('UX','https://cdn-images-1.medium.com/max/184/1*4igu0GOdXEqBvJfUJhHfyw@2x.png'), ('Data Science', 'https://http2.mlstatic.com/S_291825-MCO25493110355_042017-O.jpg'), ('WDI','http://www.freeiconspng.com/uploads/responsive-icon-23.png');
 
 CREATE TABLE treasures (
   id SERIAL4 PRIMARY KEY,
@@ -36,8 +36,6 @@ INSERT INTO treasures (name, description, image_url, point_value, found) VALUES 
 INSERT INTO treasures (name, description, image_url, point_value, found) VALUES ('St. Kilda','something about the St. Kilda','https://media.timeout.com/images/103025847/710/399/image.jpg', 5, false);
 
 INSERT INTO treasures (name, description, image_url, point_value, found) VALUES ('Circus Oz','See a show by Circus Oz','https://media.timeout.com/images/103380868/710/399/image.jpg', 5, false);
-
-
 
 
 CREATE TABLE players_treasures_teams (

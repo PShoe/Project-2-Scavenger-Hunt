@@ -5,3 +5,6 @@
 .not_found {
   background-color: lightblue;
 }
+.scores {
+  display: inline-block;
+}
