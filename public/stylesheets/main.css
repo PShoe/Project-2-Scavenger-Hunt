@@ -1,14 +1,53 @@
+body {
+  background: url("/../images/melb.jpg");
+  color: white;
+  padding-top: 40px;
+  padding-left: 20px;
+}
+.login {
+  padding: 20px;
+}
+
 .found {
-  background-color: grey;
-  width: 200px
+  background-color: #303030;
+  color: white;
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+}
+.found img {
+  padding-bottom: 10px;
+  width: 100%;
 }
 .not_found {
-  background-color: lightblue;
-  width: 200px;
+  background-color: #303030;
+  color: white;
+  display: inline-block;
+  width: 30%;
+  margin: 10px;
+}
+.not_found img {
+  width: 100%;
 }
 .scores img, .scores p {
   display: inline-block;
 }
 a {
   cursor: pointer;
+  text-decoration: none;
+  color: red;
+}
+main {
+  background-color: black;
+  width: 80%;
+  color: white;
+  margin: 0 auto;
+  padding: 20px;
+}
+.show img {
+  border: 1px solid white;
+}
+.border {
+  border: 3px solid white;
+  border-radius: 50%;
 }

@@ -1,3 +1,7 @@
+
+<main>
+
+
 <% if logged_in? %>
 <form action="/session" method="post">
   <input type="hidden" name="_method" value="delete">
@@ -13,49 +17,56 @@
   <p>Personal score: <%= @player_points %></p>
   <h2>TEAM SCORES:</h2>
   <div class="scores">
-    <img src='<%= @wdi_image %>' width="100">
+    <div class="each">
+    <img class="border" src='<%= @wdi_image %>' width="100">
     <p>WDI: <%= @wdi_points %></p>
-    <img src='<%= @ds_image %>' width="100">
+    </div>
+    <div class="each">
+    <img class="border" src='<%= @ds_image %>' width="100">
     <p>Data Science: <%= @ds_points %></p>
+    </div>
+    <div class="each">
     <img src='<%= @ux_image %>' width="100">
     <p>UX: <%= @ux_points %></p>
+    </div>
   </div>
 <% end %>
 
 <% if @treasures_found.first %>
   <h1>Your team has found:</h1>
-  <div class="found">
+
   <% @treasures_found.each do |treasure| %>
+    <div class="found">
     <% treasure = Treasure.find(treasure.treasure_id) %>
     <%= treasure.name %>
       <img src="<%= treasure.image_url %>" width="200" alt="">
     <% treasure.comments.each do |comment| %>
       <%= create_link_with_comment(treasure, comment) %></br>
+      </div>
     <% end %>
   <% end %>
   </div>
 <% end %>
-
-
-
 
 
 <% if @treasures_not_found.first %>
   <h1>Your team still needs to find:</h1>
-  <div class="not_found">
   <% @treasures_not_found.each do |treasure| %>
     <% if logged_in? %>
-      <form class="" action="/found" method="post">
-        <input type="hidden" name="treasure_id" value="<%= treasure.id %>">
-        <h3><%= treasure.name %></h3>
-        <p><%= treasure.description %></p>
-        <a href="<%= treasure.site_url %>">
-        <img src="<%= treasure.image_url %>" width="200" alt="">
-        </a>
-        <p>Points: <%= treasure.point_value %></p>
-        <button type="submit">I did this!</button>
-      </form>
+      <div class="not_found">
+        <form class="" action="/found" method="post">
+          <input type="hidden" name="treasure_id" value="<%= treasure.id %>">
+          <h3><%= treasure.name %></h3>
+          <p><%= treasure.description %></p>
+          <a href="<%= treasure.site_url %>">
+          <img src="<%= treasure.image_url %>" width="200" alt="">
+          </a>
+          <p>Points: <%= treasure.point_value %></p>
+          <button type="submit">I did this!</button>
+        </form>
+      </div>
     <% end %>
   <% end %>
-  </div>
 <% end %>
+
+</main>
