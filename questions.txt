@@ -23,3 +23,17 @@ Treasure.where().sum(:point_value)
 Treasure.left_outer_joins(:players_treasures_teams).where('players_treasures_teams.play_tre_tm_id is null and team_id = ?', 1)
 
 select id, name, play_tre_tm_id, team_id from treasures left join (select * from players_treasures_teams where team_id = 2) as found on treasures.id = found.treasure_id where team_id is null;
+
+api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599
+
+response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
+
+
+Melbourne:
+"id": 7839805,
+"name": "Melbourne",
+"country": "AU",
+"coord": {
+  "lon": 144.944214,
+  "lat": -37.813061
+}

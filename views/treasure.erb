@@ -1,11 +1,15 @@
 <h1>This is the treasure home page</h1>
 
 <% if logged_in? %>
+  <h2>SCORES:</h2>
   <p><%= current_player.name %></p>
   <p><%= @player_points %></p>
   <p><%= current_player.team.name %></p>
   <p><%= @team_points %></p>
 <% end %>
+
+<h1>Melbourne Scavenger Weather Today:</h1>
+<h3><%= @condition %> with a min temp of <%= @min_temp %>(°C) and a max temp of <%= @max_temp %>(°C)</h3>
 
 
 <% if @treasures_found.first %>

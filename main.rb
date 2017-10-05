@@ -7,9 +7,15 @@ require_relative 'models/player'
 require_relative 'models/team'
 require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
-require_relative 'treasure_methods'
+# require_relative 'treasure_methods'
+require 'httparty'
+
 
 enable :sessions
+
+API_KEY = '&APPID=d10ed7fa849100a3d43e443f9ba5b599'
+
+@weather_response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
 
 
 helpers do
@@ -64,6 +70,14 @@ post '/register' do
 end
 
 get '/treasure' do
+
+  @weather_response = HTTParty.get('http://api.openweathermap.org/data/2.5/weather?id=7839805&APPID=d10ed7fa849100a3d43e443f9ba5b599').parsed_response
+  @condition = @weather_response['weather'].first['main']
+  @min_temp = @weather_response['main']['temp_min']
+  @min_temp = @min_temp - 273.15
+  @max_temp = @weather_response['main']['temp_max']
+  @max_temp = @max_temp - 273.15
+
   team_id = current_player.team_id
   @treasures_found = PlayersTreasuresTeam.where(team_id: team_id)
   @treasures_not_found =
@@ -73,9 +87,10 @@ get '/treasure' do
   player = current_player
   @player_points = player.treasures.sum(:point_value)
 
-  # add score to team
-  team = player.team
-  @team_points = team.treasures.sum(:point_value)
+  @green_points = Team.find(1).treasures.sum(:point_value)
+  @blue_points = Team.find(1).treasures.sum(:point_value)
+  @red_points = Team.find(1).treasures.sum(:point_value)
+
 
   erb :treasure
 end

@@ -5,6 +5,7 @@ require_relative 'models/team'
 require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
 require_relative 'treasure_methods'
+require 'httparty'
 
 binding.pry
 
