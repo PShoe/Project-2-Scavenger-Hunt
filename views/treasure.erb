@@ -1,19 +1,16 @@
-
+<% if logged_in? %>
+<form action="/session" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Log out</button>
+</form>
+<% end %>
 <main>
 <div class="weather">
   <h1>Melbourne Weather Today</h1>
   <h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
 </div>
-<% if logged_in? %>
-<form action="/session" method="post">
-  <input type="hidden" name="_method" value="delete">
-<button>Log out</button>
-<% end %>
 
 <% if logged_in? %>
-  <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
-  <p>Personal score: <%= @player_points %></p>
-  <h2>TEAM SCORES:</h2>
   <div class="scores">
     <div class="each">
     <img class="border" src='<%= @wdi_image %>' width="100">
@@ -27,28 +24,33 @@
     <img src='<%= @ux_image %>' width="100">
     <p>UX: <%= @ux_points %></p>
     </div>
+    <h2><%= current_player.name %>, <%= current_player.team.name %>.</h2>
+    <p>Personal score: <%= @player_points %></p>
   </div>
 <% end %>
 
+<div class="treasures_found">
 <% if @treasures_found.first %>
-  <h1>Your team has found:</h1>
-
+  <h1>Found items:</h1>
   <% @treasures_found.each do |treasure| %>
     <div class="found">
     <% treasure = Treasure.find(treasure.treasure_id) %>
-    <%= treasure.name %>
+    <h3><%= treasure.name %></h3>
       <img src="<%= treasure.image_url %>" width="200" alt="">
     <% treasure.comments.each do |comment| %>
-      <%= create_link_with_comment(treasure, comment) %></br>
+      <%= create_link_with_comment(treasure, comment) %>
+      </br>
     <% end %>
     </div>
   <% end %>
   </div>
 <% end %>
+</div>
 
 
 <% if @treasures_not_found.first %>
-  <h1>Your team still needs to find:</h1>
+<div class="treasures_not_found">
+  <h1>Still on the hunt for:</h1>
   <% @treasures_not_found.each do |treasure| %>
     <% if logged_in? %>
       <div class="not_found">
@@ -66,5 +68,6 @@
     <% end %>
   <% end %>
 <% end %>
+</div>
 
 </main>

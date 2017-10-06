@@ -7,19 +7,37 @@ body {
   color: white;
   font-family: 'Raleway', sans-serif;
 }
+.treasures_found, .treasures_not_found {
+  padding: 20px;
+}
+.treasures_found h1 {
+  font-family: 'Merriweather', serif;
+  padding-left: 20px;
+  color: #780000;
+}
+.treasures_not_found h1 {
+  font-family: 'Merriweather', serif;
+  padding-left: 20px;
+  color: #367588;
+}
 .login {
   padding: 20px;
 }
 .found,
 .not_found
  {
+  vertical-align: top;
   background-color: #080808;
   color: linen;
   display: inline-block;
-  width: 30%;
+  width: 25%;
   margin: 10px;
   border: 1px solid #181818;
   padding: 10px;
+}
+.found h3,
+.not_found h3 {
+  color: #367588;
 }
 .found img,
 .not_found img {
@@ -27,15 +45,33 @@ body {
   width: 100%;
 }
 .found {
-  border-bottom: 2px solid white;
+  /*border-bottom: 2px solid 	#780000;*/
+  border-left: 2px solid 	#780000;
 }
-.scores img, .scores p {
+.not_found {
+  /*border-bottom: 2px solid #367588;*/
+  border-left: 2px solid #367588;
+}
+
+.each {
   display: inline-block;
+  width: 200px;
+    text-align: center;
+}
+.each img {
+  text-align: center;
+}
+.scores {
+  text-align: center;
+  padding-top: 45px;
+}
+.scores h2 {
+  color: #367588;
 }
 a {
   cursor: pointer;
   text-decoration: none;
-  color: red;
+  color: #FFCC99;
 }
 main {
   background-color: black;
@@ -53,6 +89,13 @@ main button {
   color: white;
   padding: 30px;
   font-family: 'Merriweather', serif;
+  border-bottom: 1px solid white;
+}
+.weather h1 {
+  color: linen;
+}
+.weather h3 {
+  font-weight: 100;
 }
 .show img {
   border: 1px solid white;
