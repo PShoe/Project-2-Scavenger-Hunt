@@ -7,13 +7,8 @@ require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
 require_relative 'models/comment'
 require 'httparty'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 require 'pry'
-
-if ENV['RACK_ENV'] != 'production'
-  require 'sinatra/reloader'
-  require 'pry'
-end
 
 
 enable :sessions

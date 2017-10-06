@@ -1,8 +1,5 @@
 <main>
-
 <h1><%= @treasure.name %></h1>
-
-
 <img src="<%= @treasure.image_url %>" alt="">
 
 <% if logged_in? %>
@@ -14,7 +11,6 @@
     <textarea name="body" rows="4" cols="50" placeholder="<%= @comment.body %>"></textarea>
     <button type="submit" name="button">Edit</button>
   </form>
-
   </body>
   <% end %>
 </main>

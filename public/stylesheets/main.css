@@ -53,8 +53,7 @@ body {
     font-size: 16px;
 }
 .found,
-.not_found,
- {
+.not_found {
   vertical-align: top;
   background-color: #080808;
   color: linen;
