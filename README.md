@@ -16,7 +16,7 @@ This was an app to demonstrate our ability to use CRUD operations, as well as AP
 
 ## Improvements needed
 
-* Validate only one email address
+* Validate only one email address per player
 * remove API key from codebase
 * finish up CSS
 * clean and INDENT my code
