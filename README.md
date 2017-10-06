@@ -10,8 +10,9 @@ This was an app to demonstrate our ability to use CRUD operations, as well as AP
 * Open weather API
 * Put, delete, get, post - all four RESTful routes in https requests
 * log-in, register capabilities
-* used SQL to create a database
+* used SQL to create a database, linking tables, and active record to access DB
 * hosted on heroku
+* unique experience as each team
 
 
 ## Improvements needed
