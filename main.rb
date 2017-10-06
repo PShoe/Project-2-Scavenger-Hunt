@@ -1,16 +1,19 @@
 require 'sinatra'
-# require 'sinatra/reloader'
 require 'pg'
-require 'pry'
 require_relative 'db_config'
 require_relative 'models/player'
 require_relative 'models/team'
 require_relative 'models/treasure'
 require_relative 'models/players_treasures_team'
 require_relative 'models/comment'
-
-# require_relative 'treasure_methods'
 require 'httparty'
+require 'sinatra/reloader'
+require 'pry'
+
+if ENV['RACK_ENV'] != 'production'
+  require 'sinatra/reloader'
+  require 'pry'
+end
 
 
 enable :sessions
@@ -56,7 +59,7 @@ end
 
 post '/session' do
   player = Player.find_by(email: params[:email])
-  # if !player
+  # validate to make sure player hasn't already registered
     if player && player.authenticate(params[:password])
       session[:player_id] = player.id
       redirect '/treasure'
@@ -104,6 +107,7 @@ get '/treasure' do
 
   player = current_player
   @player_points = player.treasures.sum(:point_value)
+
   # could add these as for each loops
   @wdi_image = Team.find(3).image_url
   @ds_image = Team.find(2).image_url
@@ -121,7 +125,7 @@ post '/found' do
   found_record.player_id = current_player.id
   found_record.team_id = current_player.team_id
   found_record.save
-  # redirect '/treasure'
+
   @treasure = Treasure.find(params[:treasure_id])
   @comments = Comment.where(treasure_id: params[:treasure_id])
   erb :show

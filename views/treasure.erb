@@ -1,15 +1,16 @@
-<% if logged_in? %>
-<form action="/session" method="post">
-  <input type="hidden" name="_method" value="delete">
-  <button>Log out</button>
-</form>
-<% end %>
 <main>
 <div class="weather">
   <h1>Melbourne Weather Today</h1>
   <h3><%= @condition %> with a min temp of <%= @min_temp %> (°C) and a max temp of <%= @max_temp %> (°C)</h3>
 </div>
-
+<% if logged_in? %>
+<div class="logout">
+<form action="/session" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button>Log out</button>
+</form>
+</div>
+<% end %>
 <% if logged_in? %>
   <div class="scores">
     <div class="each">

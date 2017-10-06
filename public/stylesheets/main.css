@@ -3,9 +3,10 @@
 }
 body {
   background: url("/../images/melb.jpg") fixed no-repeat;
-  padding: 40px 20px;
+  padding: 0px 40px 20px 40px;
   color: white;
   font-family: 'Raleway', sans-serif;
+  background-color: black;
 }
 .treasures_found, .treasures_not_found {
   padding: 20px;
@@ -21,10 +22,38 @@ body {
   color: #367588;
 }
 .login {
-  padding: 20px;
+  padding: 200px 30px;
+  font-family: 'Raleway', sans-serif;
+}
+.login input {
+  background: black;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+.login h1 {
+  font-size: 50px;
+}
+.login label {
+  font-size: 25px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+.logout {
+  padding-right: 20px;
+  text-align: right;
+}
+.logout button {
+    background-color: #367588; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 .found,
-.not_found
+.not_found,
  {
   vertical-align: top;
   background-color: #080808;
@@ -52,11 +81,10 @@ body {
   /*border-bottom: 2px solid #367588;*/
   border-left: 2px solid #367588;
 }
-
 .each {
   display: inline-block;
   width: 200px;
-    text-align: center;
+  text-align: center;
 }
 .each img {
   text-align: center;
@@ -67,6 +95,9 @@ body {
 }
 .scores h2 {
   color: #367588;
+}
+.show {
+  padding: 20px;
 }
 a {
   cursor: pointer;
